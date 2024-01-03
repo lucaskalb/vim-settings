@@ -20,3 +20,9 @@ Sessionx.vim
 tags
 # Persistent undo
 [._]*.un~
+
+after/**
+autoload/**
+colors/**
+doc/**
+plugged/**

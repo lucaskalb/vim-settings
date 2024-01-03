@@ -7,15 +7,19 @@ vnoremap ; :
 " Insert completion...
 
 " -- Select with arrows up and down --
-inoremap <expr> <up> pumvisible() ? '<c-p>' : '<up>'
-inoremap <expr> <down> pumvisible() ? '<c-n>' : '<down>'
+"inoremap <expr> <up> pumvisible() ? '<c-p>' : '<up>'
+"inoremap <expr> <down> pumvisible() ? '<c-n>' : '<down>'
 
 " -- Accept with right arrow or enter --
-inoremap <expr> <right> pumvisible() ? '<c-y>' : '<right>'
-inoremap <expr> <cr> pumvisible() ? '<c-y>' : '<cr>'
+"inoremap <expr> <right> pumvisible() ? '<c-y>' : '<right>'
+"inoremap <expr> <cr> pumvisible() ? '<c-y>' : '<cr>'
 
 " -- Cancel completion with left arrow --
-inoremap <expr> <left> pumvisible() ? '<c-e>' : '<left>'
+"inoremap <expr> <left> pumvisible() ? '<c-e>' : '<left>'
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 " Helpers
 map <f2> :set spell!<cr>
@@ -71,12 +75,25 @@ map <leader>ff za
 map <leader>fg zi
 map <leader>fe zf}
 
+" Find Files
+map <leader>sf :FZF<cr>
+
+" Nerd Tree
+nnoremap <leader>ee :NERDTreeTabsToggle<cr>
+nnoremap <leader>es :NERDTreeFind<cr>
+
 " Tabulação
 map <leader>ta :tab ball<cr>
 map <leader>to :tabonly<cr>
 
 " Explorer
 nnoremap <leader>t :tabe %<cr>
-map <leader>e :30Lex<cr>
 
+" Replace
 nnoremap <leader>sr :%s/<C-R><C-W>/
+
+" LSP
+map <F6> <plug>(lsp-code-action-float)
+
+
+
